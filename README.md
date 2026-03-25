@@ -14,6 +14,7 @@ An AI-powered application built on Cloudflare Agents SDK:
 ## Quick demo
 
 - **Local dev UI**: `http://localhost:5173/`
+- **Deployed demo**: `https://my-agent.alibek010299.workers.dev/`
 - The UI has two tabs:
   - **Counter**: calls `@callable()` methods on `CounterAgent`
   - **Chat**: streams responses from `ChatAgent` + tools (`getWeather`, `getUserTimezone`, approval-gated `calculate`)
