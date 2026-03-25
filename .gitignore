@@ -146,3 +146,11 @@ dist
 .dev.vars*
 !.dev.vars.example
 !.env.example
+
+# Vite / tooling caches
+**/.vite
+
+# Local Wrangler logs (when redirected)
+.wrangler/
+.wrangler/logs/
+.wrangler/logs/**

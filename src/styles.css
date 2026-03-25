@@ -10,3 +10,245 @@ body,
   height: 100%;
   margin: 0;
 }
+
+:root {
+  --bg: #ffffff;
+  --panel: #ffffff;
+  --panel2: #f6f7fb;
+  --border: rgba(15, 23, 42, 0.12);
+  --text: rgba(15, 23, 42, 0.92);
+  --muted: rgba(15, 23, 42, 0.64);
+  --brand: #2563eb;
+  --danger: #dc2626;
+  --warn: #b45309;
+  --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  --radius: 14px;
+}
+
+body {
+  background:
+    radial-gradient(900px 600px at 20% 0%, #eff6ff 0%, transparent 55%),
+    radial-gradient(900px 600px at 85% 10%, #ecfeff 0%, transparent 55%),
+    var(--bg);
+  color: var(--text);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
+}
+
+.app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+.brand {
+  font-weight: 650;
+  letter-spacing: 0.2px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  padding: 4px;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.tab {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tabActive {
+  color: var(--text);
+  background: var(--panel2);
+}
+
+.main {
+  width: min(980px, calc(100% - 32px));
+  margin: 22px auto 34px;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: var(--panel2);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 650;
+}
+
+.btn:hover {
+  border-color: rgba(37, 99, 235, 0.35);
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btnSecondary {
+  background: transparent;
+}
+
+.counterValue {
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 10px 0 16px;
+}
+
+.chatBox {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 14px;
+  max-height: min(62vh, 720px);
+  overflow: auto;
+}
+
+.msg {
+  padding: 10px 8px;
+  border-bottom: 1px dashed rgba(15, 23, 42, 0.12);
+}
+
+.msg:last-child {
+  border-bottom: 0;
+}
+
+.msgMeta {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.msgBody {
+  margin-top: 8px;
+}
+
+.bubble {
+  display: inline-block;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  white-space: pre-wrap;
+}
+
+.toolCard {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #ffffff;
+}
+
+.toolCardWarn {
+  border-color: rgba(180, 83, 9, 0.35);
+}
+
+.toolCardDanger {
+  border-color: rgba(220, 38, 38, 0.35);
+  color: var(--danger);
+}
+
+.toolTitle {
+  font-weight: 650;
+  margin-bottom: 8px;
+}
+
+.codeBlock {
+  margin: 0;
+  padding: 10px;
+  border-radius: 12px;
+  background: #0b1220;
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  overflow: auto;
+}
+
+.chatForm {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.input {
+  flex: 1;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #ffffff;
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}

@@ -1,6 +1,9 @@
 {
   "extends": "agents/tsconfig",
   "compilerOptions": {
+    // Ensure TC39 decorators are downleveled correctly for @callable()
+    "target": "ES2021"
     // add your overrides here
-  }
+  },
+  "exclude": ["src/app.tsx", "src/server.test.ts", "vitest.config.ts"]
 }

@@ -1,12 +1,59 @@
-# Agent Starter
+# cf_ai_my-agent (Cloudflare AI Assignment)
 
 ![npm i agents command](./npm-agents-banner.svg)
 
-<a href="https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents-starter"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"/></a>
+An AI-powered application built on Cloudflare Agents SDK:
 
-A starter template for building AI chat agents on Cloudflare, powered by the [Agents SDK](https://developers.cloudflare.com/agents/).
+- **LLM**: Workers AI via `workers-ai-provider` (streaming chat)
+- **Coordination**: Durable Objects via Agents SDK (`CounterAgent`, `ChatAgent`)
+- **User input**: Browser chat UI (React + WebSockets)
+- **Memory/state**:
+  - `CounterAgent` state synced in real-time
+  - `ChatAgent` conversation persisted via `AIChatAgent` (SQLite inside the DO)
 
-Uses Workers AI (no API key required), with tools for weather, timezone detection, calculations with approval, task scheduling, and vision (image input).
+## Quick demo
+
+- **Local dev UI**: `http://localhost:5173/`
+- The UI has two tabs:
+  - **Counter**: calls `@callable()` methods on `CounterAgent`
+  - **Chat**: streams responses from `ChatAgent` + tools (`getWeather`, `getUserTimezone`, approval-gated `calculate`)
+
+## Running locally
+
+From this folder:
+
+```bash
+npm install
+WRANGLER_LOG_PATH=./.wrangler/logs npm run dev
+```
+
+Open `http://localhost:5173/`.
+
+### Troubleshooting local dev (workers.dev / remote mode)
+
+If `npm run dev` tries to start a remote proxy session and fails (workers.dev subdomain / auth), switch to **local mode**:
+
+- In the dev server terminal, use the interactive prompt and pick **local mode** (it will offer it).
+
+## Deploy
+
+```bash
+npm run deploy
+```
+
+After deploy, open the printed `workers.dev` URL.
+
+## Test / lint / typecheck
+
+```bash
+npm run check
+```
+
+### Tests
+
+```bash
+WRANGLER_LOG_PATH=./.wrangler/logs npm test
+```
 
 ## Quick start
 
@@ -31,9 +78,8 @@ Try these prompts to see the different features:
 
 ```
 src/
-  server.ts    # Chat agent with tools and scheduling
-  app.tsx      # Chat UI built with Kumo components
-  client.tsx   # React entry point
+  server.ts    # CounterAgent + ChatAgent (Workers AI)
+  client.tsx   # React UI entry (Counter/Chat tabs)
   styles.css   # Tailwind + Kumo styles
 ```
 
@@ -47,6 +93,10 @@ src/
 - **Debug mode** — toggle in the header to inspect raw message JSON for each message
 - **Kumo UI** — Cloudflare's design system with dark/light mode
 - **Real-time** — WebSocket connection with automatic reconnection and message persistence
+
+## AI prompts used
+
+See `PROMPTS.md`.
 
 ## Making it your own
 
